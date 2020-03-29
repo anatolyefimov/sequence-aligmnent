@@ -3,25 +3,25 @@ const [$firstSequence, $secondSequence] = document.querySelectorAll('.input__seq
 
 function setValidityMessage(input) {
     if (input.validity.patternMismatch) {
-        input.setCustomValidity("Последовательность должна сотоять из символов аглийского алфавита");
+        input.setCustomValidity('Последовательность должна сотоять из заглавных символов аглийского алфавита, за исключением B, J, O, U, X, и Z');
     } else if (input.validity.tooLong) {
-        input.setCustomValidity("Длина последовательности не более 1000 символов");
+        input.setCustomValidity('Длина последовательности не более 1000 символов');
     } else {
-        input.setCustomValidity("");
+        input.setCustomValidity('');
     }
 }
 
 $firstSequence.addEventListener('input', function() {
     setValidityMessage($firstSequence);
-})
+});
 
 $secondSequence.addEventListener('input', function() {
     setValidityMessage($secondSequence);
-})
+});
 
 $input.addEventListener('submit', function(event){
     event.preventDefault();
-    
+
     let s = $firstSequence.value;
     let t = $secondSequence.value;
     let n = s.length;
@@ -46,7 +46,7 @@ $input.addEventListener('submit', function(event){
         for (let j = 1; j <= m; ++j) {
             f[i][j] = Math.max(
                 f[i- 1][j - 1] + similarity(s[i - 1], t[j - 1]),
-                f[i - 1][j] - 2, 
+                f[i - 1][j] - 2,
                 f[i][j - 1] - 2,
             );
         }
@@ -82,5 +82,4 @@ $input.addEventListener('submit', function(event){
     $editDistance.textContent = editDistance;
     $firstSequnce.textContent = a;
     $seconSequence.textContent = b;
-})
-
+});

@@ -16,6 +16,10 @@ jobs:
               with:
                 node-version: 12.x
             - run: npm i
-            - run: ./node_modules/.bin/node-w3c-validator -i ./index.html 
-              name: HTML W3C Validation
+            - run: node_modules/.bin/node-w3c-validator -i src/index.html 
+              name: HTML W3C validation
+            - run: node_modules/.bin/css-validator src/style.css 
+              name: CSS validation
+            - run: npm run lint
+              name: JS linting
     
