@@ -1,10 +1,29 @@
 const $input = document.querySelector('.input');
+const [$firstSequence, $secondSequence] = document.querySelectorAll('.input__sequence');
+
+function setValidityMessage(input) {
+    if (input.validity.patternMismatch) {
+        input.setCustomValidity("Последовательность должна сотоять из символов аглийского алфавита");
+    } else if (input.validity.tooLong) {
+        input.setCustomValidity("Длина последовательности не более 1000 символов");
+    } else {
+        input.setCustomValidity("");
+    }
+}
+
+$firstSequence.addEventListener('input', function() {
+    setValidityMessage($firstSequence);
+})
+
+$secondSequence.addEventListener('input', function() {
+    setValidityMessage($secondSequence);
+})
 
 $input.addEventListener('submit', function(event){
     event.preventDefault();
-    sequences = event.target.elements;  
-    let s = sequences['first-sequence'].value;
-    let t = sequences['second-sequence'].value;
+    
+    let s = $firstSequence.value;
+    let t = $secondSequence.value;
     let n = s.length;
     let m = t.length;
 
