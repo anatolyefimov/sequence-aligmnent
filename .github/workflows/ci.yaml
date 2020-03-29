@@ -1,0 +1,21 @@
+name: Continious Integration
+on:
+    pull_request:
+    push:
+        branches:
+            - master
+
+jobs:
+    lint:
+        name: "Validation and linting"
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Setup node 12
+              uses: actions/setup-node@v1
+              with:
+                node-version: 12.x
+            - run: npm i
+            - run: ./node_modules/.bin/node-w3c-validator -i ./index.html 
+              name: HTML W3C Validation
+    
