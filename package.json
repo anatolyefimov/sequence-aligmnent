@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/anatolyefimov/sequence-aligmnent#readme",
   "devDependencies": {
-    "browser-sync": "^2.26.7",
+    "browser-sync": "^2.27.10",
     "css-validator": "^0.9.0",
     "eslint": "^6.8.0",
     "gh-pages": "^2.2.0",
